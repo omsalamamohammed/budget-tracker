@@ -1,166 +1,342 @@
-/* General page styling */
+
+/* =================================
+   1. COLOR PALETTE
+   ================================= */
+
+:root {
+    --primary: #2878d0;
+    --primary-dark: #195ca5;
+    --background: #f3f6fb;
+    --surface: #ffffff;
+    --text: #263449;
+    --muted: #64748b;
+    --border: #dbe3ee;
+    --table-alternate: #edf4fc;
+    --table-hover: #dcecff;
+}
+
+/* =================================
+   2. GENERAL PAGE STYLING
+   ================================= */
+
+* {
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Merriweather', serif;
+    font-size: 15px;
+    line-height: 1.7;
     margin: 0;
-    padding: 20px;
-    background-color: #f4f4f4;
-    color: #333;
-    line-height: 1.6;
-}
-
-.page-header {
-    text-align: center;
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 25px;
-}
-
-.page-header img {
-    display: block;
-    margin: 0 auto;
-}
-
-h1 {
-    color: #333;
-}
-
-h2 {
-    color: #2c3e50;
+    padding: 24px;
+    background-color: var(--background);
+    color: var(--text);
 }
 
 main {
+    width: 100%;
     max-width: 1000px;
     margin: 0 auto;
 }
 
-/* Expense form section */
-.add-expense-section {
-    background-color: #e8f2ff;
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 25px;
+/* =================================
+   3. HEADINGS AND TYPOGRAPHY
+   ================================= */
+
+h1,
+h2 {
+    font-family: 'Manrope', sans-serif;
+    color: var(--text);
+    line-height: 1.3;
 }
 
-/* Advanced selector: direct child */
+h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 12px 0;
+}
+
+h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+p {
+    margin-top: 8px;
+}
+
+.page-header p {
+    color: var(--muted);
+}
+
+/* =================================
+   4. PAGE HEADER CARD
+   ================================= */
+
+.page-header {
+    max-width: 1000px;
+    margin: 0 auto 28px;
+    padding: 28px 20px;
+    text-align: center;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(38, 52, 73, 0.06);
+}
+
+.page-header img {
+    display: block;
+    width: 60px;
+    height: auto;
+    margin: 0 auto 12px;
+}
+
+/* =================================
+   5. ADD EXPENSE FORM CARD
+   ================================= */
+
+.add-expense-section {
+    margin-bottom: 28px;
+    padding: 26px;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-top: 5px solid var(--primary);
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(38, 52, 73, 0.06);
+}
+
 .add-expense-section > form {
     display: grid;
     grid-template-columns: 1fr;
     gap: 10px;
 }
 
-/* Form fields */
+/* Form labels */
+
+label {
+    margin-top: 8px;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    color: var(--text);
+}
+
+/* Form inputs and dropdown */
+
 input,
 select {
-    box-sizing: border-box;
     width: 100%;
-    max-width: 450px;
-    padding: 10px;
-    border: 1px solid #bbb;
-    border-radius: 4px;
-    font-size: 16px;
+    max-width: 100%;
+    min-height: 46px;
+    padding: 11px 13px;
+    font-family: 'Merriweather', serif;
+    font-size: 14px;
+    color: var(--text);
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-/* Advanced selector: negation pseudo-class */
+/* Input background */
+
 input:not([type="submit"]) {
-    background-color: #fff;
+    background-color: var(--surface);
 }
 
-/* Advanced selector: focus state */
+/* Focus effect */
+
 input:focus,
 select:focus {
-    outline: 2px solid #2878d0;
-    border-color: #2878d0;
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(40, 120, 208, 0.15);
 }
 
-/* Button styling */
+/* =================================
+   6. BUTTON STYLING
+   ================================= */
+
 button {
     width: fit-content;
-    padding: 12px 20px;
-    background-color: #2878d0;
-    color: white;
+    margin-top: 12px;
+    padding: 12px 22px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #ffffff;
+    background-color: var(--primary);
     border: none;
-    border-radius: 5px;
-    font-size: 16px;
+    border-radius: 8px;
     cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
 }
 
 button:hover {
-    background-color: #195ca5;
+    background-color: var(--primary-dark);
+    transform: translateY(-1px);
 }
 
-/* Expense table section */
+/* =================================
+   7. EXPENSE TABLE CARD
+   ================================= */
+
 .expenses-section {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 25px;
+    margin-bottom: 28px;
+    padding: 26px;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(38, 52, 73, 0.06);
 }
+
+/* Make the table scrollable on small screens */
 
 .table-container {
     width: 100%;
     overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: 10px;
 }
 
-/* Advanced selector: descendant selector */
+/* Table layout */
+
 .expenses-section table {
     width: 100%;
     border-collapse: collapse;
+    background-color: var(--surface);
 }
+
+/* Table cells */
 
 .expenses-section th,
 .expenses-section td {
-    border: 1px solid #ccc;
-    padding: 12px;
+    padding: 14px 16px;
     text-align: left;
+    border-bottom: 1px solid var(--border);
 }
 
-/* Colored table header */
-.expenses-section thead {
-    background-color: #2878d0;
-    color: white;
+/* Table header */
+
+.expenses-section th {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    color: #ffffff;
+    background-color: var(--primary);
 }
 
-/* Advanced selector: positional pseudo-class */
+/* Alternating row colors */
+
 .expenses-section tbody tr:nth-child(even) {
-    background-color: #eaf2f8;
+    background-color: var(--table-alternate);
 }
 
-/* Hover effect on table rows */
+/* Row hover effect */
+
 .expenses-section tbody tr:hover {
-    background-color: #d3e8ff;
+    background-color: var(--table-hover);
 }
 
-/* Help section */
+/* Remove the bottom border from the last row */
+
+.expenses-section tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* =================================
+   8. HELP SECTION CARD
+   ================================= */
+
 .help-section {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 25px;
+    margin-bottom: 28px;
+    padding: 24px;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(38, 52, 73, 0.06);
 }
 
 summary {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
     cursor: pointer;
-    font-weight: bold;
 }
 
-/* Video section */
+details p {
+    color: var(--muted);
+}
+
+/* =================================
+   9. VIDEO SECTION CARD
+   ================================= */
+
 .video-section {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 25px;
+    margin-bottom: 28px;
+    padding: 24px;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(38, 52, 73, 0.06);
 }
 
 .video-section iframe {
     display: block;
-    max-width: 100%;
+    width: 100%;
+    max-width: 560px;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    margin-top: 16px;
     border: none;
+    border-radius: 10px;
 }
 
-/* Footer */
+/* =================================
+   10. FOOTER
+   ================================= */
+
 footer {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
     text-align: center;
-    padding: 15px;
-    color: #555;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* =================================
+   11. MOBILE RESPONSIVENESS
+   ================================= */
+
+@media (max-width: 600px) {
+    body {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .page-header,
+    .add-expense-section,
+    .expenses-section,
+    .help-section,
+    .video-section {
+        padding: 18px;
+        border-radius: 12px;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    .expenses-section th,
+    .expenses-section td {
+        padding: 10px;
+    }
+
+    button {
+        width: 100%;
+    }
 }
